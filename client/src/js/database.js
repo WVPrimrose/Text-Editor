@@ -35,8 +35,7 @@ export const putDb = async (content) => console.error('putDb not implemented');
 };
 
 // TODO: Add logic for a method that gets all the content from the database
-export const getDb = async () => console.error('getDb not implemented');
-{
+export const getDb = async () => {
   console.log('Post to the database');
 
   // Create a connection to the database database and version we want to use.
@@ -49,11 +48,12 @@ export const getDb = async () => console.error('getDb not implemented');
   const store = tx.objectStore('text-editor');
 
   // Use the .add() method on the store and pass in the content.
-  const request = store.getAll(content);
+  const request = store.getAll();
 
   // Get confirmation of the request.
   const result = await request;
   console.log('Data saved to the database', result);
+  return result;
 };
 
 initdb();
