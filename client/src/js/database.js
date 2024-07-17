@@ -43,13 +43,13 @@ export const getDb = async () => console.error('getDb not implemented');
   const textEditorDb = await openDB('text-editor', 1);
 
   // Create a new transaction and specify the database and data privileges.
-  const tx = textEditorDb.transaction('text-editor', 'readwrite');
+  const tx = textEditorDb.transaction('text-editor', 'readonly');
 
   // Open up the desired object store.
   const store = tx.objectStore('text-editor');
 
   // Use the .add() method on the store and pass in the content.
-  const request = store.add(content);
+  const request = store.getAll(content);
 
   // Get confirmation of the request.
   const result = await request;
